@@ -154,10 +154,6 @@ object-fit:cover;
 border:2px solid #ff003c;
 }
 
-.breaking-badge{
-display:none;
-}
-
 .breaking{
 width:92%;
 height:95px;
@@ -260,12 +256,6 @@ background:#00ff99;
 color:black;
 }
 
-.range-value{
-font-size:11px;
-color:#999;
-margin-top:5px;
-}
-
 .footer{
 text-align:center;
 margin-top:16px;
@@ -282,7 +272,7 @@ color:#777;
 
 <div class="card">
 
-<img src="logo.png"
+<img src="https://i.postimg.cc/your-logo-link/logo.png"
 class="logo">
 
 <h1 class="title">
@@ -309,26 +299,6 @@ CYBER PHOTO GENERATOR
 
 <div class="input-box">
 
-<label>Channel Name</label>
-
-<input type="text"
-id="channel"
-value="GK Guardian">
-
-</div>
-
-<div class="input-box">
-
-<label>Description</label>
-
-<textarea id="desc">
-আমরা ছায়ায় থাকি, শক্তিতে কথা বলি।
-</textarea>
-
-</div>
-
-<div class="input-box">
-
 <label>Theme Color</label>
 
 <select id="themeColor">
@@ -340,67 +310,6 @@ value="GK Guardian">
 <option value="#9d00ff">Purple</option>
 
 </select>
-
-</div>
-
-<div class="input-box">
-
-<label>Enable Watermark</label>
-
-<select id="watermarkToggle">
-
-<option value="show">ON</option>
-<option value="hide">OFF</option>
-
-</select>
-
-</div>
-
-<div class="input-box">
-
-<label>Watermark Size</label>
-
-<input type="range"
-id="watermarkSize"
-min="80"
-max="350"
-value="180">
-
-</div>
-
-<div class="input-box">
-
-<label>Watermark Opacity</label>
-
-<input type="range"
-id="watermarkOpacity"
-min="1"
-max="100"
-value="9">
-
-</div>
-
-<div class="input-box">
-
-<label>Watermark Up / Down</label>
-
-<input type="range"
-id="watermarkY"
-min="50"
-max="400"
-value="175">
-
-</div>
-
-<div class="input-box">
-
-<label>Watermark Left / Right</label>
-
-<input type="range"
-id="watermarkX"
-min="20"
-max="80"
-value="50">
 
 </div>
 
@@ -438,13 +347,6 @@ onclick="generate()">
 
 </button>
 
-<button class="btn download-btn"
-id="downloadBtn">
-
-💾 HD DOWNLOAD
-
-</button>
-
 <div class="preview"
 id="preview">
 
@@ -461,7 +363,7 @@ id="preview">
 <div class="watermark"
 id="watermark">
 
-<img src="logo.png">
+<img src="https://i.postimg.cc/your-logo-link/logo.png">
 
 </div>
 
@@ -502,16 +404,16 @@ id="previewHeadline">
 
 <div class="bottom">
 
-<img src="logo.png"
+<img src="https://i.postimg.cc/your-logo-link/logo.png"
 id="userLogo">
 
 <div>
 
-<h2 id="previewChannel">
+<h2>
 GK Guardian
 </h2>
 
-<p id="previewDesc">
+<p>
 আমরা ছায়ায় থাকি, শক্তিতে কথা বলি।
 </p>
 
@@ -537,8 +439,6 @@ GK GUARDIAN HABIB CYBER SYSTEM
 </div>
 
 </div>
-
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <script>
 
@@ -616,15 +516,6 @@ reader.readAsDataURL(file);
 
 function generate(){
 
-document.getElementById("previewHeadline").innerText =
-document.getElementById("headline").value;
-
-document.getElementById("previewChannel").innerText =
-document.getElementById("channel").value;
-
-document.getElementById("previewDesc").innerText =
-document.getElementById("desc").value;
-
 const theme =
 document.getElementById("themeColor").value;
 
@@ -654,80 +545,9 @@ img.style.border =
 
 });
 
-const watermarkStatus =
-document.getElementById("watermarkToggle").value;
-
-if(watermarkStatus == "show"){
-
-document.getElementById("watermark")
-.style.display = "flex";
-
-}else{
-
-document.getElementById("watermark")
-.style.display = "none";
-
 }
-
-const watermarkSize =
-document.getElementById("watermarkSize").value;
-
-document.getElementById("watermark")
-.style.width = watermarkSize + "px";
-
-document.getElementById("watermark")
-.style.height = watermarkSize + "px";
-
-const watermarkOpacity =
-document.getElementById("watermarkOpacity").value;
-
-document.getElementById("watermark")
-.style.opacity = watermarkOpacity / 100;
-
-const watermarkY =
-document.getElementById("watermarkY").value;
-
-document.getElementById("watermark")
-.style.top = watermarkY + "px";
-
-const watermarkX =
-document.getElementById("watermarkX").value;
-
-document.getElementById("watermark")
-.style.left = watermarkX + "%";
-
-}
-
-document.getElementById("downloadBtn")
-.addEventListener("click", function () {
-
-html2canvas(
-document.getElementById("preview"),{
-scale:3
-})
-
-.then(canvas => {
-
-let link =
-document.createElement("a");
-
-link.download =
-"GK_Guardian_Habib_HD.png";
-
-link.href =
-canvas.toDataURL("image/png");
-
-document.body.appendChild(link);
-
-link.click();
-
-document.body.removeChild(link);
-
-});
-
-});
 
 </script>
 
 </body>
-  </html>
+</html>
