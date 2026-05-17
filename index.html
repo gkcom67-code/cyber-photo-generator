@@ -427,7 +427,7 @@ Small ← → Large
 <input type="range"
 id="watermarkOpacity"
 min="1"
-max="20"
+max="100"
 value="9">
 
 <div class="range-value">
@@ -600,6 +600,8 @@ GK GUARDIAN HABIB CYBER SYSTEM
 
 <script>
 
+/* IMAGE 1 */
+
 document.getElementById("upload1")
 .addEventListener("change",function(){
 
@@ -622,6 +624,8 @@ reader.readAsDataURL(file);
 
 });
 
+/* IMAGE 2 */
+
 document.getElementById("upload2")
 .addEventListener("change",function(){
 
@@ -643,6 +647,8 @@ reader.readAsDataURL(file);
 }
 
 });
+
+/* LOGO */
 
 document.getElementById("logoUpload")
 .addEventListener("change",function(){
@@ -669,18 +675,90 @@ reader.readAsDataURL(file);
 
 });
 
+/* GENERATE */
+
 function generate(){
 
-document.getElementById("previewHeadline").innerText=
+document.getElementById("previewHeadline").innerText =
 document.getElementById("headline").value;
 
-document.getElementById("previewChannel").innerText=
+document.getElementById("previewChannel").innerText =
 document.getElementById("channel").value;
 
-document.getElementById("previewDesc").innerText=
+document.getElementById("previewDesc").innerText =
 document.getElementById("desc").value;
 
+/* THEME COLOR */
+
+const color =
+document.getElementById("themeColor").value;
+
+document.querySelector(".preview")
+.style.borderColor = color;
+
+document.querySelector(".breaking-badge")
+.style.background = color;
+
+document.querySelectorAll(".preview-image")
+.forEach(img=>{
+
+img.style.borderColor = color;
+
+});
+
+document.querySelector(".news-bar")
+.style.borderTop = `2px solid ${color}`;
+
+document.querySelector(".news-bar")
+.style.borderBottom = `2px solid ${color}`;
+
+document.querySelector(".social-area")
+.style.borderTop = `2px solid ${color}`;
+
+document.querySelector(".bottom img")
+.style.borderColor = color;
+
+/* WATERMARK */
+
+const watermarkStatus =
+document.getElementById("watermarkToggle").value;
+
+if(watermarkStatus == "show"){
+
+document.getElementById("watermark")
+.style.display = "flex";
+
+}else{
+
+document.getElementById("watermark")
+.style.display = "none";
+
 }
+
+/* WATERMARK SIZE */
+
+const watermarkSize =
+document.getElementById("watermarkSize").value;
+
+document.getElementById("watermark")
+.style.width = watermarkSize + "px";
+
+document.getElementById("watermark")
+.style.height = watermarkSize + "px";
+
+/* WATERMARK OPACITY */
+
+const watermarkOpacity =
+document.getElementById("watermarkOpacity").value;
+
+document.getElementById("watermark")
+.style.opacity = watermarkOpacity / 100;
+
+alert("Design Generated Successfully!");
+
+}
+
+/* DOWNLOAD */
 
 document.getElementById("downloadBtn")
 .addEventListener("click", function () {
@@ -698,11 +776,15 @@ bottom.style.display = "none";
 social.style.display = "none";
 footer.style.display = "none";
 
-html2canvas(document.getElementById("preview"),{
+html2canvas(
+document.getElementById("preview"),{
 scale:3
-}).then(canvas => {
+})
 
-let link = document.createElement("a");
+.then(canvas => {
+
+let link =
+document.createElement("a");
 
 link.download =
 "GK_Guardian_Habib_HD.png";
