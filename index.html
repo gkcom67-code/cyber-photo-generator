@@ -528,6 +528,8 @@ id="previewHeadline">
 
 </div>
 
+<!-- নিচের অংশ ওয়েবসাইটে থাকবে কিন্তু DOWNLOAD এ থাকবে না -->
+
 <div class="bottom">
 
 <img src="Gk Guardian Habib cyber.png"
@@ -752,27 +754,34 @@ alert("Design Generated!");
 /* DOWNLOAD */
 
 document.getElementById("downloadBtn")
-.addEventListener("click",function(){
+.addEventListener("click", function () {
 
-html2canvas(
-document.getElementById("preview"),
-{
-useCORS:true,
-scale:4
-})
+const bottom =
+document.querySelector(".bottom");
 
-.then(canvas=>{
+const social =
+document.querySelector(".social-area");
 
-canvas.toBlob(function(blob){
+const footer =
+document.querySelector(".footer");
 
-const link=
-document.createElement("a");
+/* DOWNLOAD এর সময় নিচের অংশ hide */
 
-link.href=
-URL.createObjectURL(blob);
+bottom.style.display = "none";
+social.style.display = "none";
+footer.style.display = "none";
 
-link.download=
+html2canvas(document.getElementById("preview"),{
+scale:3
+}).then(canvas => {
+
+let link = document.createElement("a");
+
+link.download =
 "GK_Guardian_Habib_HD.png";
+
+link.href =
+canvas.toDataURL("image/png");
 
 document.body.appendChild(link);
 
@@ -780,7 +789,11 @@ link.click();
 
 document.body.removeChild(link);
 
-});
+/* আবার show */
+
+bottom.style.display = "flex";
+social.style.display = "block";
+footer.style.display = "block";
 
 });
 
@@ -789,4 +802,4 @@ document.body.removeChild(link);
 </script>
 
 </body>
-</html>
+  </html>
