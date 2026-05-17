@@ -155,11 +155,7 @@ border:2px solid #ff003c;
 }
 
 .breaking-badge{
-width:85px;
-height:20px;
-margin:12px 0 0 12px;
-background:#ff003c;
-border-radius:5px;
+display:none;
 }
 
 .breaking{
@@ -286,7 +282,7 @@ color:#777;
 
 <div class="card">
 
-<img src="Gk Guardian Habib cyber.png"
+<img src="logo.png"
 class="logo">
 
 <h1 class="title">
@@ -304,9 +300,9 @@ CYBER PHOTO GENERATOR
 <textarea id="headline">
 আলহামদুলিল্লাহ।
 
-অ_শ্রী_ল_তা ছড়ানোর অভিযোগে (১টি)
+অ_শ্রী_ল_তা ছড়ানোর অভিযোগে (৫০K) ফলোয়ার যুক্ত
 
-অ_শ্রী_ল ফেসবুক আইডি রিমুভ করা হলো।
+(১টি) অ_শ্রী_ল ফেসবুক আইডি রিমুভ করা হলো।
 </textarea>
 
 </div>
@@ -369,10 +365,6 @@ id="watermarkSize"
 min="80"
 max="350"
 value="180">
-
-<div class="range-value">
-Small ← → Large
-</div>
 
 </div>
 
@@ -469,7 +461,7 @@ id="preview">
 <div class="watermark"
 id="watermark">
 
-<img src="Gk Guardian Habib cyber.png">
+<img src="logo.png">
 
 </div>
 
@@ -485,16 +477,14 @@ id="previewImg2">
 
 </div>
 
-<div class="breaking-badge"></div>
-
 <div class="breaking"
 id="previewHeadline">
 
 আলহামদুলিল্লাহ।
 
-অ_শ্রী_ল_তা ছড়ানোর অভিযোগে (১টি)
+অ_শ্রী_ল_তা ছড়ানোর অভিযোগে (৫০K) ফলোয়ার যুক্ত
 
-অ_শ্রী_ল ফেসবুক আইডি রিমুভ করা হলো।
+(১টি) অ_শ্রী_ল ফেসবুক আইডি রিমুভ করা হলো।
 
 </div>
 
@@ -504,13 +494,15 @@ id="previewHeadline">
 17 / 05 / 2026
 </div>
 
-<div></div>
+<div>
+◼ BREAKING NEWS ◼
+</div>
 
 </div>
 
 <div class="bottom">
 
-<img src="Gk Guardian Habib cyber.png"
+<img src="logo.png"
 id="userLogo">
 
 <div>
@@ -646,9 +638,6 @@ document.querySelector(".title")
 .style.color = theme;
 
 document.querySelector(".generate-btn")
-.style.background = theme;
-
-document.querySelector(".breaking-badge")
 .style.background = theme;
 
 document.querySelector(".preview-top")
