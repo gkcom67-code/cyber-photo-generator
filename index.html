@@ -648,6 +648,13 @@ document.getElementById("downloadBtn")
 const preview =
 document.getElementById("preview");
 
+const bottom =
+document.querySelector(".bottom");
+
+/* DOWNLOAD এর আগে নিচের অংশ hide */
+
+bottom.style.display = "none";
+
 try{
 
 const canvas = await html2canvas(preview,{
@@ -674,7 +681,13 @@ link.click();
 
 document.body.removeChild(link);
 
+/* আবার show */
+
+bottom.style.display = "flex";
+
 }catch(error){
+
+bottom.style.display = "flex";
 
 alert("Download Failed!");
 
