@@ -154,10 +154,6 @@ object-fit:cover;
 border:2px solid #ff003c;
 }
 
-.breaking-badge{
-display:none;
-}
-
 .breaking{
 width:92%;
 height:95px;
@@ -220,25 +216,6 @@ font-size:11px;
 color:#999;
 }
 
-.social-area{
-padding:14px;
-background:#0b0b0b;
-border-top:2px solid #ff003c;
-}
-
-.social-area p{
-display:flex;
-align-items:center;
-gap:10px;
-margin:8px 0;
-font-size:12px;
-color:#ccc;
-}
-
-.social-area i{
-color:#ff003c;
-}
-
 .btn{
 width:100%;
 padding:14px;
@@ -260,12 +237,6 @@ background:#00ff99;
 color:black;
 }
 
-.range-value{
-font-size:11px;
-color:#999;
-margin-top:5px;
-}
-
 .footer{
 text-align:center;
 margin-top:16px;
@@ -282,7 +253,7 @@ color:#777;
 
 <div class="card">
 
-<img src="logo.png"
+<img src="Gk Guardian Habib cyber.png"
 class="logo">
 
 <h1 class="title">
@@ -303,26 +274,6 @@ CYBER PHOTO GENERATOR
 অ_শ্রী_ল_তা ছড়ানোর অভিযোগে (৫০K) ফলোয়ার যুক্ত
 
 (১টি) অ_শ্রী_ল ফেসবুক আইডি রিমুভ করা হলো।
-</textarea>
-
-</div>
-
-<div class="input-box">
-
-<label>Channel Name</label>
-
-<input type="text"
-id="channel"
-value="GK Guardian">
-
-</div>
-
-<div class="input-box">
-
-<label>Description</label>
-
-<textarea id="desc">
-আমরা ছায়ায় থাকি, শক্তিতে কথা বলি।
 </textarea>
 
 </div>
@@ -461,7 +412,7 @@ id="preview">
 <div class="watermark"
 id="watermark">
 
-<img src="logo.png">
+<img src="Gk Guardian Habib cyber.png">
 
 </div>
 
@@ -502,29 +453,20 @@ id="previewHeadline">
 
 <div class="bottom">
 
-<img src="logo.png"
+<img src="Gk Guardian Habib cyber.png"
 id="userLogo">
 
 <div>
 
-<h2 id="previewChannel">
+<h2>
 GK Guardian
 </h2>
 
-<p id="previewDesc">
+<p>
 আমরা ছায়ায় থাকি, শক্তিতে কথা বলি।
 </p>
 
 </div>
-
-</div>
-
-<div class="social-area">
-
-<p>
-<i class="fa-solid fa-shield"></i>
-Protected Design
-</p>
 
 </div>
 
@@ -619,12 +561,6 @@ function generate(){
 document.getElementById("previewHeadline").innerText =
 document.getElementById("headline").value;
 
-document.getElementById("previewChannel").innerText =
-document.getElementById("channel").value;
-
-document.getElementById("previewDesc").innerText =
-document.getElementById("desc").value;
-
 const theme =
 document.getElementById("themeColor").value;
 
@@ -654,6 +590,8 @@ img.style.border =
 
 });
 
+/* WATERMARK SHOW */
+
 const watermarkStatus =
 document.getElementById("watermarkToggle").value;
 
@@ -669,6 +607,8 @@ document.getElementById("watermark")
 
 }
 
+/* SIZE */
+
 const watermarkSize =
 document.getElementById("watermarkSize").value;
 
@@ -678,11 +618,15 @@ document.getElementById("watermark")
 document.getElementById("watermark")
 .style.height = watermarkSize + "px";
 
+/* OPACITY */
+
 const watermarkOpacity =
 document.getElementById("watermarkOpacity").value;
 
 document.getElementById("watermark")
 .style.opacity = watermarkOpacity / 100;
+
+/* POSITION */
 
 const watermarkY =
 document.getElementById("watermarkY").value;
