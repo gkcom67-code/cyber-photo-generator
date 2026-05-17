@@ -124,12 +124,12 @@ font-weight:bold;
 letter-spacing:4px;
 }
 
-/* WATERMARK */
+/* WATERMARK FIXED */
 
 .watermark{
 position:absolute;
 
-top:22%;
+top:175px;
 left:50%;
 
 transform:translate(-50%,-50%);
@@ -170,9 +170,7 @@ z-index:1;
 .preview-image{
 width:50%;
 height:260px;
-
 object-fit:cover;
-
 border:2px solid #ff003c;
 }
 
@@ -266,9 +264,7 @@ color:#999;
 
 .social-area{
 padding:14px;
-
 background:#0b0b0b;
-
 border-top:2px solid #ff003c;
 }
 
@@ -276,11 +272,8 @@ border-top:2px solid #ff003c;
 display:flex;
 align-items:center;
 gap:10px;
-
 margin:8px 0;
-
 font-size:12px;
-
 color:#ccc;
 }
 
@@ -397,7 +390,6 @@ value="GK Guardian">
 <select id="watermarkToggle">
 
 <option value="show">ON</option>
-
 <option value="hide">OFF</option>
 
 </select>
@@ -688,37 +680,7 @@ document.getElementById("channel").value;
 document.getElementById("previewDesc").innerText =
 document.getElementById("desc").value;
 
-/* THEME COLOR */
-
-const color =
-document.getElementById("themeColor").value;
-
-document.querySelector(".preview")
-.style.borderColor = color;
-
-document.querySelector(".breaking-badge")
-.style.background = color;
-
-document.querySelectorAll(".preview-image")
-.forEach(img=>{
-
-img.style.borderColor = color;
-
-});
-
-document.querySelector(".news-bar")
-.style.borderTop = `2px solid ${color}`;
-
-document.querySelector(".news-bar")
-.style.borderBottom = `2px solid ${color}`;
-
-document.querySelector(".social-area")
-.style.borderTop = `2px solid ${color}`;
-
-document.querySelector(".bottom img")
-.style.borderColor = color;
-
-/* WATERMARK */
+/* WATERMARK SHOW / HIDE */
 
 const watermarkStatus =
 document.getElementById("watermarkToggle").value;
@@ -809,4 +771,4 @@ footer.style.display = "block";
 </script>
 
 </body>
-</html>
+  </html>
