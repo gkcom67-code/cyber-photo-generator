@@ -643,23 +643,30 @@ document.getElementById("watermark")
 }
 
 document.getElementById("downloadBtn")
-.addEventListener("click", function () {
+.addEventListener("click", async function () {
 
-html2canvas(
-document.getElementById("preview"),{
-scale:3
-})
+const preview =
+document.getElementById("preview");
 
-.then(canvas => {
+try{
 
-let link =
+const canvas = await html2canvas(preview,{
+scale:3,
+useCORS:true,
+allowTaint:true,
+backgroundColor:null
+});
+
+const image =
+canvas.toDataURL("image/png");
+
+const link =
 document.createElement("a");
+
+link.href = image;
 
 link.download =
 "GK_Guardian_Habib_HD.png";
-
-link.href =
-canvas.toDataURL("image/png");
 
 document.body.appendChild(link);
 
@@ -667,7 +674,13 @@ link.click();
 
 document.body.removeChild(link);
 
-});
+}catch(error){
+
+alert("Download Failed!");
+
+console.log(error);
+
+}
 
 });
 
