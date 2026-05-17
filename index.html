@@ -124,7 +124,7 @@ font-weight:bold;
 letter-spacing:4px;
 }
 
-/* WATERMARK FIXED */
+/* WATERMARK */
 
 .watermark{
 position:absolute;
@@ -174,78 +174,52 @@ object-fit:cover;
 border:2px solid #ff003c;
 }
 
-/* BREAKING */
-
 .breaking-badge{
 display:inline-block;
-
 margin:12px 0 0 12px;
-
 background:#ff003c;
-
 padding:6px 14px;
-
 font-size:10px;
 font-weight:bold;
-
 letter-spacing:3px;
 }
 
 .breaking{
 padding:16px;
-
 font-size:22px;
 font-weight:bold;
-
 line-height:1.5;
-
 background:#140000;
-
 color:white;
 }
 
-/* NEWS BAR */
-
 .news-bar{
 height:45px;
-
 background:#0d0d0d;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
-
 padding:0 14px;
-
 font-size:10px;
 letter-spacing:3px;
-
 color:#999;
-
 border-top:2px solid #ff003c;
 border-bottom:2px solid #ff003c;
 }
-
-/* PROFILE */
 
 .bottom{
 display:flex;
 align-items:center;
 gap:14px;
-
 padding:16px;
-
 background:#050505;
 }
 
 .bottom img{
 width:60px;
 height:60px;
-
 border-radius:10px;
-
 border:2px solid #ff003c;
-
 object-fit:cover;
 }
 
@@ -259,8 +233,6 @@ margin-bottom:5px;
 font-size:11px;
 color:#999;
 }
-
-/* SOCIAL */
 
 .social-area{
 padding:14px;
@@ -280,8 +252,6 @@ color:#ccc;
 .social-area i{
 color:#ff003c;
 }
-
-/* BUTTON */
 
 .btn{
 width:100%;
@@ -425,6 +395,32 @@ value="9">
 <div class="range-value">
 Light ← → Dark
 </div>
+
+</div>
+
+<!-- NEW POSITION OPTION -->
+
+<div class="input-box">
+
+<label>Watermark Up / Down</label>
+
+<input type="range"
+id="watermarkY"
+min="50"
+max="400"
+value="175">
+
+</div>
+
+<div class="input-box">
+
+<label>Watermark Left / Right</label>
+
+<input type="range"
+id="watermarkX"
+min="20"
+max="80"
+value="50">
 
 </div>
 
@@ -680,7 +676,7 @@ document.getElementById("channel").value;
 document.getElementById("previewDesc").innerText =
 document.getElementById("desc").value;
 
-/* WATERMARK SHOW / HIDE */
+/* WATERMARK SHOW */
 
 const watermarkStatus =
 document.getElementById("watermarkToggle").value;
@@ -697,7 +693,7 @@ document.getElementById("watermark")
 
 }
 
-/* WATERMARK SIZE */
+/* SIZE */
 
 const watermarkSize =
 document.getElementById("watermarkSize").value;
@@ -708,13 +704,27 @@ document.getElementById("watermark")
 document.getElementById("watermark")
 .style.height = watermarkSize + "px";
 
-/* WATERMARK OPACITY */
+/* OPACITY */
 
 const watermarkOpacity =
 document.getElementById("watermarkOpacity").value;
 
 document.getElementById("watermark")
 .style.opacity = watermarkOpacity / 100;
+
+/* POSITION */
+
+const watermarkY =
+document.getElementById("watermarkY").value;
+
+document.getElementById("watermark")
+.style.top = watermarkY + "px";
+
+const watermarkX =
+document.getElementById("watermarkX").value;
+
+document.getElementById("watermark")
+.style.left = watermarkX + "%";
 
 alert("Design Generated Successfully!");
 
