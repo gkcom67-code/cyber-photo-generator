@@ -34,6 +34,7 @@ background:#0a0a0a;
 border:2px solid #ff003c;
 padding:14px;
 box-shadow:0 0 15px #ff003c70;
+border-radius:18px;
 }
 
 .logo{
@@ -101,50 +102,31 @@ border:2px solid #ff003c;
 overflow:hidden;
 position:relative;
 box-shadow:0 0 12px #ff003c70;
+border-radius:18px;
 }
 
 .preview-top{
 height:45px;
-
-background:
-linear-gradient(to right,
-#400000,
-#ff003c,
-#400000);
-
+background:linear-gradient(to right,#400000,#ff003c,#400000);
 display:flex;
 justify-content:space-between;
 align-items:center;
-
 padding:0 14px;
-
 font-size:11px;
 font-weight:bold;
-
 letter-spacing:4px;
 }
 
-/* WATERMARK */
-
 .watermark{
 position:absolute;
-
 top:175px;
 left:50%;
-
 transform:translate(-50%,-50%);
-
 width:180px;
 height:180px;
-
 opacity:0.09;
-
-filter:blur(0.5px);
-
 pointer-events:none;
-
 z-index:5;
-
 display:flex;
 justify-content:center;
 align-items:center;
@@ -155,8 +137,6 @@ width:100%;
 height:100%;
 object-fit:contain;
 }
-
-/* DOUBLE IMAGE */
 
 .double-image{
 display:flex;
@@ -175,22 +155,32 @@ border:2px solid #ff003c;
 }
 
 .breaking-badge{
-display:inline-block;
+width:85px;
+height:20px;
 margin:12px 0 0 12px;
 background:#ff003c;
-padding:6px 14px;
-font-size:10px;
-font-weight:bold;
-letter-spacing:3px;
+border-radius:5px;
 }
 
 .breaking{
-padding:16px;
-font-size:22px;
-font-weight:bold;
-line-height:1.5;
-background:#140000;
+width:92%;
+height:95px;
+margin:12px auto;
+padding:10px;
+background:#06142b;
 color:white;
+border:2px solid gold;
+border-radius:16px;
+font-size:9px;
+font-weight:bold;
+line-height:1.4;
+text-align:center;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+word-break:break-word;
+overflow-wrap:break-word;
 }
 
 .news-bar{
@@ -312,7 +302,11 @@ CYBER PHOTO GENERATOR
 <label>Headline</label>
 
 <textarea id="headline">
-এখানে আপনার ঘোষণার লেখা
+আলহামদুলিল্লাহ।
+
+অ_শ্রী_ল_তা ছড়ানোর অভিযোগে (১টি)
+
+অ_শ্রী_ল ফেসবুক আইডি রিমুভ করা হলো।
 </textarea>
 
 </div>
@@ -392,13 +386,7 @@ min="1"
 max="100"
 value="9">
 
-<div class="range-value">
-Light ← → Dark
 </div>
-
-</div>
-
-<!-- NEW POSITION OPTION -->
 
 <div class="input-box">
 
@@ -474,7 +462,7 @@ id="preview">
 
 <div>GK GUARDIAN</div>
 
-<div>ACG</div>
+<div>GKH</div>
 
 </div>
 
@@ -497,14 +485,16 @@ id="previewImg2">
 
 </div>
 
-<div class="breaking-badge">
-ACG BREAKING
-</div>
+<div class="breaking-badge"></div>
 
 <div class="breaking"
 id="previewHeadline">
 
-এখানে আপনার ঘোষণার লেখা
+আলহামদুলিল্লাহ।
+
+অ_শ্রী_ল_তা ছড়ানোর অভিযোগে (১টি)
+
+অ_শ্রী_ল ফেসবুক আইডি রিমুভ করা হলো।
 
 </div>
 
@@ -514,9 +504,7 @@ id="previewHeadline">
 17 / 05 / 2026
 </div>
 
-<div>
-◼ BREAKING NEWS ◼
-</div>
+<div></div>
 
 </div>
 
@@ -546,32 +534,6 @@ GK Guardian
 Protected Design
 </p>
 
-<p>
-<i class="fa-brands fa-facebook"></i>
-
-<a href="https://www.facebook.com/share/1baUSpqEnk/"
-target="_blank"
-style="color:white;text-decoration:none;">
-
-Facebook Profile
-
-</a>
-
-</p>
-
-<p>
-<i class="fa-brands fa-whatsapp"></i>
-
-<a href="https://wa.me/9609150448"
-target="_blank"
-style="color:white;text-decoration:none;">
-
-WhatsApp Contact
-
-</a>
-
-</p>
-
 </div>
 
 </div>
@@ -587,8 +549,6 @@ GK GUARDIAN HABIB CYBER SYSTEM
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <script>
-
-/* IMAGE 1 */
 
 document.getElementById("upload1")
 .addEventListener("change",function(){
@@ -612,8 +572,6 @@ reader.readAsDataURL(file);
 
 });
 
-/* IMAGE 2 */
-
 document.getElementById("upload2")
 .addEventListener("change",function(){
 
@@ -636,8 +594,6 @@ reader.readAsDataURL(file);
 
 });
 
-/* LOGO */
-
 document.getElementById("logoUpload")
 .addEventListener("change",function(){
 
@@ -655,6 +611,9 @@ e.target.result;
 document.querySelector(".watermark img").src=
 e.target.result;
 
+document.querySelector(".logo").src=
+e.target.result;
+
 }
 
 reader.readAsDataURL(file);
@@ -662,8 +621,6 @@ reader.readAsDataURL(file);
 }
 
 });
-
-/* GENERATE */
 
 function generate(){
 
@@ -676,7 +633,37 @@ document.getElementById("channel").value;
 document.getElementById("previewDesc").innerText =
 document.getElementById("desc").value;
 
-/* WATERMARK SHOW */
+const theme =
+document.getElementById("themeColor").value;
+
+document.querySelector(".card")
+.style.borderColor = theme;
+
+document.querySelector(".preview")
+.style.borderColor = theme;
+
+document.querySelector(".title")
+.style.color = theme;
+
+document.querySelector(".generate-btn")
+.style.background = theme;
+
+document.querySelector(".breaking-badge")
+.style.background = theme;
+
+document.querySelector(".preview-top")
+.style.background =
+"linear-gradient(to right,#400000,"
++ theme +
+",#400000)";
+
+document.querySelectorAll(".preview-image")
+.forEach(img => {
+
+img.style.border =
+"2px solid " + theme;
+
+});
 
 const watermarkStatus =
 document.getElementById("watermarkToggle").value;
@@ -693,8 +680,6 @@ document.getElementById("watermark")
 
 }
 
-/* SIZE */
-
 const watermarkSize =
 document.getElementById("watermarkSize").value;
 
@@ -704,15 +689,11 @@ document.getElementById("watermark")
 document.getElementById("watermark")
 .style.height = watermarkSize + "px";
 
-/* OPACITY */
-
 const watermarkOpacity =
 document.getElementById("watermarkOpacity").value;
 
 document.getElementById("watermark")
 .style.opacity = watermarkOpacity / 100;
-
-/* POSITION */
 
 const watermarkY =
 document.getElementById("watermarkY").value;
@@ -726,27 +707,10 @@ document.getElementById("watermarkX").value;
 document.getElementById("watermark")
 .style.left = watermarkX + "%";
 
-alert("Design Generated Successfully!");
-
 }
-
-/* DOWNLOAD */
 
 document.getElementById("downloadBtn")
 .addEventListener("click", function () {
-
-const bottom =
-document.querySelector(".bottom");
-
-const social =
-document.querySelector(".social-area");
-
-const footer =
-document.querySelector(".footer");
-
-bottom.style.display = "none";
-social.style.display = "none";
-footer.style.display = "none";
 
 html2canvas(
 document.getElementById("preview"),{
@@ -769,10 +733,6 @@ document.body.appendChild(link);
 link.click();
 
 document.body.removeChild(link);
-
-bottom.style.display = "flex";
-social.style.display = "block";
-footer.style.display = "block";
 
 });
 
