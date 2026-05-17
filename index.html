@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GK Guardian Habib</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<title>Cyber Photo Generator</title>
 
 <style>
-
-:root{
---themeColor:#ff003c;
-}
 
 *{
 margin:0;
@@ -22,364 +14,186 @@ box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
 
+:root{
+--theme:#ff004c;
+}
+
 body{
-background:#050505;
-color:white;
-padding:12px;
+background:#000;
+color:#fff;
+padding:20px;
+overflow-x:hidden;
 }
 
 .container{
-max-width:390px;
+max-width:500px;
 margin:auto;
 }
 
-.card{
-background:#070707;
-border:2px solid var(--themeColor);
-padding:14px;
-
-box-shadow:
-0 0 20px var(--themeColor);
-
-transition:0.3s;
-}
-
-/* TOP LOGO */
-
-.top-logo{
-width:90px;
-height:90px;
-
+.logo{
+width:120px;
+height:120px;
 border-radius:50%;
-
-margin:auto;
-display:block;
-
 object-fit:cover;
-
-border:3px solid var(--themeColor);
-
-box-shadow:
-0 0 20px var(--themeColor);
-
-transition:0.3s;
+display:block;
+margin:auto;
+border:4px solid var(--theme);
+box-shadow:0 0 25px var(--theme);
 }
-
-/* TITLE */
 
 .title{
 text-align:center;
-font-size:24px;
-margin-top:10px;
+font-size:32px;
 font-weight:bold;
-
-color:var(--themeColor);
-
-text-shadow:
-0 0 10px var(--themeColor);
-
-transition:0.3s;
+margin-top:15px;
+color:var(--theme);
+text-shadow:0 0 15px var(--theme);
 }
 
 .subtitle{
 text-align:center;
-font-size:11px;
-letter-spacing:4px;
-margin-top:5px;
-color:#aaa;
+margin-top:8px;
+font-size:15px;
+color:#ccc;
 }
 
-/* FORM */
+.color-box{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:25px;
+}
+
+.color-btn{
+height:50px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+color:#fff;
+}
+
+.red{background:#ff004c;}
+.blue{background:#007bff;}
+.green{background:#00c853;}
+.purple{background:#a200ff;}
+.orange{background:#ff6600;}
+.pink{background:#ff1493;}
+
+.preview{
+margin-top:30px;
+padding:20px;
+border:2px solid var(--theme);
+border-radius:20px;
+background:#111;
+box-shadow:0 0 25px var(--theme);
+}
+
+.preview img{
+width:100%;
+border-radius:15px;
+border:3px solid var(--theme);
+}
+
+.preview-title{
+text-align:center;
+font-size:24px;
+margin-bottom:20px;
+color:var(--theme);
+text-shadow:0 0 10px var(--theme);
+}
 
 .input-box{
-margin-top:16px;
+margin-top:20px;
 }
 
-label{
-display:block;
-margin-bottom:7px;
-font-size:13px;
-font-weight:bold;
-color:#00d9ff;
-}
-
-input,
-textarea,
-select{
+.input-box input{
 width:100%;
-padding:13px;
-
-background:#101010;
-
+padding:15px;
 border:none;
-outline:none;
-
 border-radius:12px;
-
-color:white;
-font-size:13px;
+outline:none;
+background:#1c1c1c;
+color:#fff;
+font-size:16px;
+border:2px solid var(--theme);
 }
-
-textarea{
-height:75px;
-resize:none;
-}
-
-/* BUTTON */
 
 .btn{
 width:100%;
-padding:15px;
-
-border:none;
-border-radius:14px;
-
-font-size:15px;
-font-weight:bold;
-
-cursor:pointer;
-
-margin-top:18px;
-}
-
-.generate-btn{
-background:var(--themeColor);
-color:white;
-
-box-shadow:
-0 0 18px var(--themeColor);
-
-transition:0.3s;
-}
-
-.download-btn{
-background:#00ff99;
-color:black;
-}
-
-/* PREVIEW */
-
-.preview{
-margin-top:22px;
-
-border:2px solid var(--themeColor);
-
-background:#050505;
-
-overflow:hidden;
-position:relative;
-
-box-shadow:
-0 0 18px var(--themeColor);
-
-transition:0.3s;
-}
-
-/* TOP BAR */
-
-.preview-top{
-height:50px;
-
-background:
-linear-gradient(
-to right,
-#111,
-var(--themeColor),
-#111
-);
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:0 16px;
-
-font-size:12px;
-font-weight:bold;
-
-letter-spacing:5px;
-
-transition:0.3s;
-}
-
-/* WATERMARK */
-
-.watermark{
-position:absolute;
-
-top:32%;
-left:50%;
-
-transform:translate(-50%,-50%);
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-pointer-events:none;
-
-z-index:10;
-}
-
-.watermark img{
-width:100%;
-height:100%;
-
-object-fit:contain;
-
-opacity:0.12;
-
-filter:blur(1px);
-}
-
-/* DOUBLE IMAGE */
-
-.double-image{
-display:flex;
-gap:4px;
-padding:4px;
-position:relative;
-z-index:1;
-}
-
-.preview-image{
-width:50%;
-height:320px;
-
-object-fit:cover;
-
-border:2px solid var(--themeColor);
-
-transition:0.3s;
-}
-
-/* BREAKING */
-
-.breaking-badge{
-display:inline-block;
-
-margin:10px 0 0 10px;
-
-padding:7px 15px;
-
-background:var(--themeColor);
-
-font-size:10px;
-font-weight:bold;
-
-letter-spacing:3px;
-
-box-shadow:
-0 0 10px var(--themeColor);
-
-transition:0.3s;
-}
-
-.breaking{
 padding:18px;
-
-background:#140000;
-
+margin-top:20px;
+border:none;
+border-radius:15px;
 font-size:20px;
 font-weight:bold;
-
-line-height:1.5;
-}
-
-/* NEWS BAR */
-
-.news-bar{
-height:48px;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:0 14px;
-
-background:#0d0d0d;
-
-border-top:
-2px solid var(--themeColor);
-
-border-bottom:
-2px solid var(--themeColor);
-
-font-size:11px;
-letter-spacing:3px;
-
-color:#999;
-
+cursor:pointer;
 transition:0.3s;
 }
 
-/* PROFILE */
-
-.bottom{
-display:flex;
-align-items:center;
-gap:14px;
-
-padding:18px;
-
-background:#060606;
+.generate{
+background:var(--theme);
+color:#fff;
+box-shadow:0 0 20px var(--theme);
 }
 
-.bottom img{
-width:70px;
-height:70px;
-
-border-radius:14px;
-
-object-fit:cover;
-
-border:
-2px solid var(--themeColor);
-
-box-shadow:
-0 0 12px var(--themeColor);
-
-transition:0.3s;
+.download{
+background:#00ff99;
+color:#000;
+font-weight:bold;
 }
 
-.bottom h2{
-font-size:18px;
-margin-bottom:5px;
-color:#00d9ff;
+.btn:hover{
+transform:scale(1.03);
 }
 
-.bottom p{
-font-size:12px;
-color:#aaa;
+.social-links{
+text-align:center;
+margin-top:30px;
 }
 
-/* FOOTER */
+.social-links a{
+display:inline-block;
+padding:12px 25px;
+margin:5px;
+border-radius:12px;
+text-decoration:none;
+font-weight:bold;
+font-size:17px;
+color:#fff;
+}
 
-.footer-box{
-padding:14px;
+.facebook{
+background:#1877f2;
+}
 
-background:#0b0b0b;
-
-border-top:
-2px solid var(--themeColor);
-
-font-size:13px;
-color:#ccc;
-
-transition:0.3s;
+.whatsapp{
+background:#25d366;
 }
 
 .footer{
 text-align:center;
-margin-top:14px;
-font-size:11px;
-color:#777;
+margin-top:40px;
+color:#888;
+font-size:14px;
 }
 
-.range-text{
-margin-top:5px;
-font-size:11px;
-color:#888;
+@media(max-width:600px){
+
+.title{
+font-size:26px;
+}
+
+.color-box{
+grid-template-columns:repeat(2,1fr);
+}
+
+.logo{
+width:100px;
+height:100px;
+}
+
 }
 
 </style>
@@ -389,529 +203,114 @@ color:#888;
 
 <div class="container">
 
-<div class="card">
+<img src="Gk Guardian Habib cyber.png" class="logo">
 
-<img src="Gk Guardian Habib cyber.png"
-class="top-logo">
-
-<h1 class="title">
-GK GUARDIAN HABIB
-</h1>
-
-<p class="subtitle">
+<div class="title">
 CYBER PHOTO GENERATOR
-</p>
-
-<!-- HEADLINE -->
-
-<div class="input-box">
-
-<label>Headline</label>
-
-<textarea id="headline">
-এখানে আপনার ঘোষণার লেখা
-</textarea>
-
 </div>
 
-<!-- CHANNEL -->
-
-<div class="input-box">
-
-<label>Channel Name</label>
-
-<input type="text"
-id="channel"
-value="GK Guardian">
-
+<div class="subtitle">
+Create Stylish Cyber Design Instantly
 </div>
 
-<!-- DESCRIPTION -->
+<div class="color-box">
 
-<div class="input-box">
+<button class="color-btn red" onclick="changeColor('#ff004c')">
+RED
+</button>
 
-<label>Description</label>
+<button class="color-btn blue" onclick="changeColor('#007bff')">
+BLUE
+</button>
 
-<textarea id="desc">
-আমরা ছায়ায় থাকি, শক্তিতে কথা বলি।
-</textarea>
+<button class="color-btn green" onclick="changeColor('#00c853')">
+GREEN
+</button>
 
-</div>
+<button class="color-btn purple" onclick="changeColor('#a200ff')">
+PURPLE
+</button>
 
-<!-- COLOR -->
+<button class="color-btn orange" onclick="changeColor('#ff6600')">
+ORANGE
+</button>
 
-<div class="input-box">
-
-<label>Theme Color</label>
-
-<select id="themeColor">
-
-<option value="#ff003c">
-🔴 Red
-</option>
-
-<option value="#00ff99">
-🟢 Green
-</option>
-
-<option value="#00d9ff">
-🔵 Blue
-</option>
-
-<option value="#ff9900">
-🟠 Orange
-</option>
-
-<option value="#b300ff">
-🟣 Purple
-</option>
-
-<option value="#ffff00">
-🟡 Yellow
-</option>
-
-<option value="#ffffff">
-⚪ White
-</option>
-
-<option value="#ff1493">
-🌸 Pink
-</option>
-
-<option value="#00ffff">
-💎 Cyan
-</option>
-
-<option value="#ff4500">
-🔥 Deep Orange
-</option>
-
-<option value="#39ff14">
-☢ Neon Green
-</option>
-
-<option value="#8a2be2">
-🪻 Violet
-</option>
-
-</select>
-
-</div>
-
-<!-- WATERMARK -->
-
-<div class="input-box">
-
-<label>Enable Watermark</label>
-
-<select id="watermarkToggle">
-
-<option value="show">ON</option>
-<option value="hide">OFF</option>
-
-</select>
+<button class="color-btn pink" onclick="changeColor('#ff1493')">
+PINK
+</button>
 
 </div>
 
 <div class="input-box">
-
-<label>Watermark Size</label>
-
-<input type="range"
-id="watermarkSize"
-min="50"
-max="700"
-value="220">
-
-<div class="range-text">
-Small ← → Large
+<input type="text" placeholder="Enter Your Name">
 </div>
 
-</div>
-
-<div class="input-box">
-
-<label>Watermark Opacity</label>
-
-<input type="range"
-id="watermarkOpacity"
-min="1"
-max="100"
-value="12">
-
-<div class="range-text">
-Light ← → Dark
-</div>
-
-</div>
-
-<!-- LOGO SIZE -->
-
-<div class="input-box">
-
-<label>Logo Size</label>
-
-<input type="range"
-id="logoSize"
-min="40"
-max="250"
-value="70">
-
-<div class="range-text">
-Small ← → Large
-</div>
-
-</div>
-
-<!-- UPLOAD -->
-
-<div class="input-box">
-
-<label>Upload First Screenshot</label>
-
-<input type="file"
-id="upload1">
-
-</div>
-
-<div class="input-box">
-
-<label>Upload Second Screenshot</label>
-
-<input type="file"
-id="upload2">
-
-</div>
-
-<div class="input-box">
-
-<label>Upload Logo</label>
-
-<input type="file"
-id="logoUpload">
-
-</div>
-
-<!-- BUTTON -->
-
-<button class="btn generate-btn"
-onclick="generate()">
-
+<button class="btn generate">
 ⚡ GENERATE DESIGN
-
 </button>
 
-<button class="btn download-btn"
-id="downloadBtn">
-
+<button class="btn download" onclick="downloadImage()">
 💾 HD DOWNLOAD
-
 </button>
 
-<!-- PREVIEW -->
+<div class="preview">
 
-<div class="preview"
-id="preview">
+<div class="preview-title">
+LIVE PREVIEW
+</div>
 
-<div class="preview-top">
-
-<div>LIVE</div>
-
-<div>GK GUARDIAN</div>
-
-<div>ACG</div>
+<img id="previewImage"
+src="https://i.imgur.com/8Km9tLL.jpeg">
 
 </div>
 
-<!-- WATERMARK -->
+<div class="social-links">
 
-<div class="watermark"
-id="watermark">
+<a href="https://facebook.com/"
+target="_blank"
+class="facebook">
+Facebook
+</a>
 
-<img id="watermarkImg"
-src="Gk Guardian Habib cyber.png">
-
-</div>
-
-<!-- DOUBLE IMAGE -->
-
-<div class="double-image">
-
-<img src="https://via.placeholder.com/300x400"
-class="preview-image"
-id="previewImg1">
-
-<img src="https://via.placeholder.com/300x400"
-class="preview-image"
-id="previewImg2">
-
-</div>
-
-<!-- BREAKING -->
-
-<div class="breaking-badge">
-
-ACG BREAKING
-
-</div>
-
-<div class="breaking"
-id="previewHeadline">
-
-এখানে আপনার ঘোষণার লেখা
-
-</div>
-
-<!-- NEWS -->
-
-<div class="news-bar">
-
-<div>
-17 / 05 / 2026
-</div>
-
-<div>
-◼ BREAKING NEWS ◼
-</div>
-
-</div>
-
-<!-- PROFILE -->
-
-<div class="bottom">
-
-<img src="Gk Guardian Habib cyber.png"
-id="userLogo">
-
-<div>
-
-<h2 id="previewChannel">
-GK Guardian
-</h2>
-
-<p id="previewDesc">
-আমরা ছায়ায় থাকি, শক্তিতে কথা বলি।
-</p>
-
-</div>
-
-</div>
-
-<!-- FOOTER -->
-
-<div class="footer-box">
-
-🛡 Protected Design
-
-</div>
+<a href="https://wa.me/"
+target="_blank"
+class="whatsapp">
+WhatsApp
+</a>
 
 </div>
 
 <div class="footer">
-
-GK GUARDIAN HABIB CYBER SYSTEM
-
+© 2026 GK Guardian Habib
 </div>
 
 </div>
-
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <script>
 
-/* IMAGE 1 */
+function changeColor(color){
 
-document.getElementById("upload1")
-.addEventListener("change",function(){
-
-const file=this.files[0];
-
-if(file){
-
-const reader=new FileReader();
-
-reader.onload=function(e){
-
-document.getElementById("previewImg1").src=
-e.target.result;
+document.documentElement.style.setProperty('--theme',color);
 
 }
 
-reader.readAsDataURL(file);
+function downloadImage(){
 
-}
+const image=document.getElementById("previewImage").src;
 
-});
+const link=document.createElement("a");
 
-/* IMAGE 2 */
+link.href=image;
 
-document.getElementById("upload2")
-.addEventListener("change",function(){
+link.download="Cyber-Photo.png";
 
-const file=this.files[0];
-
-if(file){
-
-const reader=new FileReader();
-
-reader.onload=function(e){
-
-document.getElementById("previewImg2").src=
-e.target.result;
-
-}
-
-reader.readAsDataURL(file);
-
-}
-
-});
-
-/* LOGO */
-
-document.getElementById("logoUpload")
-.addEventListener("change",function(){
-
-const file=this.files[0];
-
-if(file){
-
-const reader=new FileReader();
-
-reader.onload=function(e){
-
-document.getElementById("userLogo").src=
-e.target.result;
-
-document.querySelector(".top-logo").src=
-e.target.result;
-
-document.getElementById("watermarkImg").src=
-e.target.result;
-
-}
-
-reader.readAsDataURL(file);
-
-}
-
-});
-
-/* GENERATE */
-
-function generate(){
-
-/* TEXT */
-
-document.getElementById("previewHeadline")
-.innerText=
-document.getElementById("headline").value;
-
-document.getElementById("previewChannel")
-.innerText=
-document.getElementById("channel").value;
-
-document.getElementById("previewDesc")
-.innerText=
-document.getElementById("desc").value;
-
-/* THEME COLOR */
-
-const color =
-document.getElementById(
-"themeColor"
-).value;
-
-document.documentElement
-.style.setProperty(
-"--themeColor",
-color
-);
-
-/* WATERMARK */
-
-const watermark =
-document.getElementById("watermark");
-
-const watermarkImg =
-document.getElementById("watermarkImg");
-
-/* SIZE */
-
-const size =
-document.getElementById("watermarkSize").value;
-
-watermark.style.width =
-size + "px";
-
-watermark.style.height =
-size + "px";
-
-/* OPACITY */
-
-const opacity =
-document.getElementById("watermarkOpacity").value;
-
-watermarkImg.style.opacity =
-opacity / 100;
-
-/* SHOW HIDE */
-
-const toggle =
-document.getElementById("watermarkToggle").value;
-
-if(toggle=="hide"){
-
-watermark.style.display="none";
-
-}else{
-
-watermark.style.display="flex";
-
-}
-
-/* LOGO SIZE */
-
-const logoSize =
-document.getElementById("logoSize").value;
-
-const userLogo =
-document.getElementById("userLogo");
-
-userLogo.style.width =
-logoSize + "px";
-
-userLogo.style.height =
-logoSize + "px";
-
-alert("Design Generated!");
-
-}
-
-/* DOWNLOAD */
-
-document.getElementById("downloadBtn")
-.addEventListener("click",function(){
-
-html2canvas(
-document.getElementById("preview"))
-
-.then(canvas=>{
-
-let link=
-document.createElement("a");
-
-link.download=
-"GK_Guardian_Habib_HD.png";
-
-link.href=
-canvas.toDataURL();
+document.body.appendChild(link);
 
 link.click();
 
-});
+document.body.removeChild(link);
 
-});
+}
 
 </script>
 
